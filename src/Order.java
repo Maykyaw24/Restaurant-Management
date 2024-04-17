@@ -1,8 +1,16 @@
+import java.util.ArrayList;
+
 public class Order {
+
     private int id;
     private OrderItem[]orderItems;
     private int tableNumber;
     private double totalOrderPrize;
+
+
+    public double getTotalOrderPrize() {
+        return totalOrderPrize;
+    }
 
     public Order(int id, OrderItem[] orderItems, int tableNumber, double totalOrderPrize) {
         this.id = id;
@@ -10,4 +18,8 @@ public class Order {
         this.tableNumber = tableNumber;
         this.totalOrderPrize = totalOrderPrize;
     }
+
+
+
+
 }

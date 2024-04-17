@@ -44,7 +44,7 @@ public class Main {
             }else if (Choice=='j') {
                 restaurant.updateMenuItemPrize();
             }else if (Choice=='k') {
-                restaurant.makeAnOrder();
+                restaurant.ordering();
             }else if (Choice=='l') {
                 restaurant.dailySaleReport();
 

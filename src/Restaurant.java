@@ -243,15 +243,11 @@ public class Restaurant {
 
     public void makeAnOrder() {
         try {
-
-
             while (true) {
                 String orderName = this.input.readStringInput("Enter item Name to order or enter 'finish' to stop");
                 if (orderName.equalsIgnoreCase("finish")) {
                     break;
                 } else {
-
-
                     this.showAllMenuItem();
                     int id = this.orders.size() + 1;
                     // String orderName = this.input.readStringInput("Enter item Name to order or enter 'finish' to stop");
@@ -267,8 +263,16 @@ public class Restaurant {
                         if (acceptableQuantity(orderName, orderQuantity)) {
                             remark = this.input.readStringInput("Enter remark");
                             reduceInventoryCount(orderName, orderQuantity);
-                            OrderItem orderItem = new OrderItem(id, orderName, orderQuantity, remark);
-                            orderItem.describeOrderItem();
+                            double price = 0;
+                            for(MenuItem mi: this.menuItems) {
+                                if(mi.getMenuName().equalsIgnoreCase(orderName)) {
+                                    price = mi.getPrize();
+                                }
+                            }
+                            OrderItem orderItem = new OrderItem(id, orderName, orderQuantity, remark, price);
+                            System.out.println("Before adding into order Items:" + this.orderItems.size());
+                            this.orderItems.add(orderItem);
+                            System.out.println("After adding into order Items:" + this.orderItems.size());
                         } else {
                             System.out.println("Not enough Quantity");
                         }
@@ -282,7 +286,7 @@ public class Restaurant {
 
     public void ordering() {
         try {
-
+            double allTotalPrice = 0;
 
             int id = this.orders.size() + 1;
             //  this.makeAnOrder();
@@ -294,19 +298,33 @@ public class Restaurant {
                 Table table = this.searchTableByID(tableNo);
                 if (table != null) {
                     this.makeAnOrder();
-                for(OrderItem item:this.orderItems){
-                    for(MenuItem Item:this.menuItems){
 
+                    System.out.println("Starting order Item price calculation:" + this.orderItems.size());
+                    for (OrderItem item: this.orderItems) {
+
+                        allTotalPrice += item.totalPrice();
+                       // System.out.println("Thank you for spanding " + allTotalPrice + "at our restaurant.");
                     }
                 }
-            }
+                Order order=new Order(id,orderItems.toArray(new OrderItem[0]),tableNo,allTotalPrice);
+                this.orders.add(order);
+            System.out.println("Thank you for spanding " + allTotalPrice + "at our restaurant.");
+
+
         } catch (NumberFormatException e) {
             System.out.println("Invalid input");
         }
     }
 
-    public void dailySaleReport(){
+    public double dailySaleReport() {
+        double TotalPrice = 0;
+        for (Order sale : orders) {
+            TotalPrice += sale.getTotalOrderPrize();
+            System.out.println("Total Sale is"+TotalPrice);
+        }
+        return TotalPrice;
     }
+
 
     }
 

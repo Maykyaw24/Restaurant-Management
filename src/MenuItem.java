@@ -1,6 +1,11 @@
 public class MenuItem {
     private int id;
     private String menuName;
+
+    public double getPrize() {
+        return prize;
+    }
+
     private double prize;
     public MenuItem(int id, String menuName,double prize){
         this.id=id;
