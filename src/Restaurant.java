@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Restaurant {
@@ -7,6 +8,7 @@ public class Restaurant {
     private ArrayList<OrderItem> orderItems;
     private ArrayList<Order> orders;
     private InputScanner input;
+    private ArrayList<DailyReport>dailyReports;
 
     public Restaurant() {
         this.input = new InputScanner();
@@ -15,6 +17,7 @@ public class Restaurant {
         this.menuItems = new ArrayList<>();
         this.orderItems = new ArrayList<>();
         this.orders = new ArrayList<>();
+        this.dailyReports= new ArrayList<>();
     }
 
     public void addInventoryItem() {
@@ -316,13 +319,16 @@ public class Restaurant {
         }
     }
 
-    public double dailySaleReport() {
+    public void dailySaleReport() {
         double TotalPrice = 0;
         for (Order sale : orders) {
             TotalPrice += sale.getTotalOrderPrize();
             System.out.println("Total Sale is"+TotalPrice);
         }
-        return TotalPrice;
+
+        DailyReport dailyReport=new DailyReport(TotalPrice,LocalDate.now().toString());
+        this.dailyReports.add(dailyReport);
+        dailyReport.describeDailyReport();
     }
 
 
