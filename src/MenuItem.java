@@ -8,10 +8,18 @@ public class MenuItem {
         this.prize=prize;
     }
 
+    public void setPrize(double prize) {
+        this.prize = prize;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
     public void describeMenuItem() {
         System.out.println("Id:" + this.id);
         System.out.println("Name:" + this.menuName);
-        System.out.println("Prize:" + this.prize);
+        System.out.println("Prize:Kyat-" + this.prize);
 
     }
 

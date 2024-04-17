@@ -18,7 +18,7 @@ public class Main {
             System.out.println("type 'g' to add menu item.");
             System.out.println("type 'z' to exit program.");
 
-            char Choice = Input.next().charAt(0);
+            char Choice = Input.nextLine().charAt(0);
             if (Choice == 'a') {
                 restaurant.addInventoryItem();
             } else if (Choice == 'b') {
@@ -35,15 +35,26 @@ public class Main {
                 restaurant.deleteTable();
             }else if (Choice=='g') {
                 restaurant.addMenuItem();
-            }else if (Choice=='z'){
+            }else if (Choice=='h') {
+                System.out.println("Enter name to search");
+                String name= Input.nextLine();
+                restaurant.searchMenuItemByName(name);
+            }else if (Choice=='i') {
+                restaurant.deleteMenuItem();
+            }else if (Choice=='j') {
+                restaurant.updateMenuItemPrize();
+            }else if (Choice=='k') {
+                restaurant.makeAnOrder();
+            }else if (Choice=='l') {
+                restaurant.dailySaleReport();
+
+            }else {
 
                 break;
 
-
             }
-
-
         }
+
     }
 }
 

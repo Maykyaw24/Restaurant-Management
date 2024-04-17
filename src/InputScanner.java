@@ -18,13 +18,13 @@ public class InputScanner {
     public double readDoubleInput(String outputPrompt) {
         double inputString = 0;
         System.out.print(outputPrompt + ":");
-        inputString = this.scanner.nextDouble();
+        inputString = Double.parseDouble(this.scanner.nextLine());
         return inputString;
     }
     public int readIntInput(String outputPrompt) {
         int inputString = 0;
         System.out.print(outputPrompt + ":");
-        inputString = this.scanner.nextInt();
+        inputString = Integer.parseInt(this.scanner.nextLine());
         return inputString;
     }
 
