@@ -108,7 +108,7 @@ public class Restaurant {
 
         for (Table ID : this.tables) {
             if (ID.getId() == id) {
-                System.out.println("Menu item found:");
+             //   System.out.println("Menu item found:");
                 ID.describeTable();
             }
             return ID;
@@ -223,9 +223,10 @@ public class Restaurant {
                 for (InventoryItem Item : this.inventoryItems) {
                     if (Item.getCount() >= orderQuantity) {
                         System.out.println("quantity can be accepted.");
-                        // } else System.out.println("quantity not enough");
+                         } else
+                             System.out.println("quantity not enough");
                     }
-                }
+
                     return true;
                 }
                 return true;
@@ -247,11 +248,12 @@ public class Restaurant {
     public void makeAnOrder() {
         try {
             while (true) {
+                this.showAllMenuItem();
                 String orderName = this.input.readStringInput("Enter item Name to order or enter 'finish' to stop");
                 if (orderName.equalsIgnoreCase("finish")) {
                     break;
                 } else {
-                    this.showAllMenuItem();
+                    //this.showAllMenuItem();
                     int id = this.orders.size() + 1;
                     // String orderName = this.input.readStringInput("Enter item Name to order or enter 'finish' to stop");
                     MenuItem targetMenu = this.searchMenuItemByName(orderName);
@@ -273,11 +275,11 @@ public class Restaurant {
                                 }
                             }
                             OrderItem orderItem = new OrderItem(id, orderName, orderQuantity, remark, price);
-                            System.out.println("Before adding into order Items:" + this.orderItems.size());
+
                             this.orderItems.add(orderItem);
-                            System.out.println("After adding into order Items:" + this.orderItems.size());
+
                         } else {
-                            System.out.println("Not enough Quantity");
+                            return;
                         }
                     }
                 }

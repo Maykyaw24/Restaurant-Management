@@ -16,6 +16,11 @@ public class Main {
             System.out.println("type 'e' to add table.");
             System.out.println("type 'f' to delete table.");
             System.out.println("type 'g' to add menu item.");
+            System.out.println("type 'h' to search menu item.");
+            System.out.println("type 'i' to delete menu item.");
+            System.out.println("type 'j' to update menu item's price.");
+            System.out.println("type 'k' to make ordering.");
+            System.out.println("type 'l' to see daily sale report.");
             System.out.println("type 'z' to exit program.");
 
             char Choice = Input.nextLine().charAt(0);
@@ -48,7 +53,7 @@ public class Main {
             }else if (Choice=='l') {
                 restaurant.dailySaleReport();
 
-            }else {
+            }else if (Choice=='z') {
 
                 break;
 
