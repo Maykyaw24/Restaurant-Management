@@ -22,7 +22,7 @@ public class MenuItem {
     }
 
     public void describeMenuItem() {
-        System.out.println("Id:" + this.id);
+        System.out.println("Menu Id:" + this.id);
         System.out.println("Name:" + this.menuName);
         System.out.println("Prize:Kyat-" + this.prize);
 

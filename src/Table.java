@@ -6,7 +6,7 @@ public class Table {
         this.size=size;
     }
     public void describeTable() {
-        System.out.println("Id:" + this.Id);
+        System.out.println("Table Number:" + this.Id);
         System.out.println("Sie:" + this.size);
     }
 

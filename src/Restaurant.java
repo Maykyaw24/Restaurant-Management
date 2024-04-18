@@ -149,7 +149,7 @@ public class Restaurant {
             //  double prize = this.input.readDoubleInput("Enter Item prize");
             if (inventoryItemExit(menuName)) {
                 int id = this.menuItems.size() + 1;
-                double prize = this.input.readDoubleInput("Enter Item prize");
+                double prize = this.input.readDoubleInput("Enter Item price");
                 if (prize < 0) {
                     System.out.println("try again!!");
                     return;
@@ -185,7 +185,7 @@ public class Restaurant {
             String menuName = this.input.readStringInput("Enter inventory item name to update.");
             MenuItem currMenu = this.searchMenuItemByName(menuName);
             if (currMenu != null) {
-                double newPrize = this.input.readDoubleInput("Enter new Prize");
+                double newPrize = this.input.readDoubleInput("Enter new Price");
                 if (newPrize < 0) {
                     System.out.println("try again");
                     return;
@@ -225,7 +225,7 @@ public class Restaurant {
                         System.out.println("quantity can be accepted.");
                         return true;
                     } else {
-                        System.out.println("quantity not enough");
+                        System.out.println("quantity not enough.Only "+Item.getCount()+"is available.");
                         return false;
                     }
                 }
@@ -253,13 +253,12 @@ public class Restaurant {
                 if (orderName.equalsIgnoreCase("finish")) {
                     break;
                 } else {
-                    //this.showAllMenuItem();
                     int id = this.orders.size() + 1;
-                    // String orderName = this.input.readStringInput("Enter item Name to order or enter 'finish' to stop");
                     MenuItem targetMenu = this.searchMenuItemByName(orderName);
                     String remark = null;
                     double orderQuantity = 0;
                     if (targetMenu != null) {
+
                         orderQuantity = this.input.readDoubleInput("Enter quantity");
                         if (orderQuantity < 0) {
                             System.out.println("try again!!");
@@ -294,7 +293,6 @@ public class Restaurant {
             double allTotalPrice = 0;
 
             int id = this.orders.size() + 1;
-            //  this.makeAnOrder();
             int tableNo = this.input.readIntInput("Enter table number to order");
             if (tableNo < 1) {
                 System.out.println("try again!!");
@@ -303,17 +301,14 @@ public class Restaurant {
                 Table table = this.searchTableByID(tableNo);
                 if (table != null) {
                     this.makeAnOrder();
-
-                   // System.out.println("Starting order Item price calculation:" + this.orderItems.size());
                     for (OrderItem item: this.orderItems) {
-
                         allTotalPrice += item.totalPrice();
-                       // System.out.println("Thank you for spanding " + allTotalPrice + "at our restaurant.");
                     }
                 }
+
                 Order order=new Order(id,orderItems.toArray(new OrderItem[0]),tableNo,allTotalPrice);
                 this.orders.add(order);
-            System.out.println("Thank you for spanding " + allTotalPrice + "at our restaurant.");
+            System.out.println("Thank you for spend " + allTotalPrice + "at our restaurant.");
 
 
         } catch (NumberFormatException e) {

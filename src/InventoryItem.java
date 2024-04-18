@@ -34,7 +34,7 @@ public class InventoryItem {
     }
 
     public void describeInventoryItem() {
-        System.out.println("Id:" + this.id);
+        System.out.println("Inventory Id:" + this.id);
         System.out.println("Name:" + this.name);
         System.out.println("Count:" + this.count);
 
