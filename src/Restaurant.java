@@ -170,7 +170,7 @@ public class Restaurant {
 
         for (MenuItem item : this.menuItems) {
             if (item.getMenuName().equalsIgnoreCase(name)) {
-                System.out.println("Menu item found:");
+                //System.out.println("Menu item found:");
                 item.describeMenuItem();
                 return item;
             }
@@ -218,22 +218,22 @@ public class Restaurant {
     }
 
     public boolean acceptableQuantity(String orderName, double orderQuantity) {
-        for (InventoryItem item : this.inventoryItems) {
-            if (item.getName().equalsIgnoreCase(orderName)) {
+        for (MenuItem item : this.menuItems) {
+            if (item.getMenuName().equalsIgnoreCase(orderName)) {
                 for (InventoryItem Item : this.inventoryItems) {
                     if (Item.getCount() >= orderQuantity) {
                         System.out.println("quantity can be accepted.");
-                         } else
-                             System.out.println("quantity not enough");
+                        return true;
+                    } else {
+                        System.out.println("quantity not enough");
+                        return false;
                     }
-
-                    return true;
                 }
-                return true;
-            }
-            return false;
-        }
 
+            }
+        }
+            return false;
+    }
     public void reduceInventoryCount(String orderName,double orderQuantity) {
         for (InventoryItem item : this.inventoryItems) {
             if (item.getName().equalsIgnoreCase(orderName)) {
@@ -304,7 +304,7 @@ public class Restaurant {
                 if (table != null) {
                     this.makeAnOrder();
 
-                    System.out.println("Starting order Item price calculation:" + this.orderItems.size());
+                   // System.out.println("Starting order Item price calculation:" + this.orderItems.size());
                     for (OrderItem item: this.orderItems) {
 
                         allTotalPrice += item.totalPrice();
